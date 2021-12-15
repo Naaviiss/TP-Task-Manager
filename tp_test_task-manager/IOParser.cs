@@ -22,8 +22,8 @@ public class IOParser
             {
                 case '+':
                     var taskName = line.Substring(2);
-                    var task = todoTaskService.AddTask(taskName);
-                    io.OutPutStringAsync($"{task.Id} [ ] {task.Name}");
+                    todoTaskService.AddTask(taskName);
+                    DisplayTasks();
                     break;
                 case 'q':
                     await io.HandleExitAsync();
@@ -33,5 +33,10 @@ public class IOParser
                     break;
             }
         }
+    }
+
+    private void DisplayTasks()
+    {
+        todoTaskService.Tasks.ToList().ForEach(async task => await io.OutPutStringAsync($"{task.Id} [ ] {task.Name}"));
     }
 }

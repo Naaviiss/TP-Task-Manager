@@ -54,4 +54,33 @@ public class IOParserTests
         Assert.AreEqual(1, fakeIO.Output.Count);
         Assert.AreEqual($"1 [ ] {taskName}", fakeIO.Output[0]);
     }
+
+    [Test]
+    public async Task Run_HandleSeveralCreations_CreateTasks()
+    {
+        //Given
+        var inputs = new Queue<string>();
+        var taskName = "Learn C#";
+        var taskName2 = "Learn Java";
+        var taskName3 = "Learn Python";
+        inputs.Enqueue($"+ {taskName}");
+        inputs.Enqueue($"+ {taskName2}");
+        inputs.Enqueue($"+ {taskName3}");
+        inputs.Enqueue($"q");
+        var fakeIO = new FakeIO(inputs);
+        ioParser = new IOParser(fakeIO, taskService);
+
+        //When
+        await ioParser.Run();
+
+        //Then
+        Assert.AreEqual(3, taskService.Tasks.Count);
+        Assert.AreEqual(6, fakeIO.Output.Count);
+        Assert.AreEqual($"1 [ ] {taskName}", fakeIO.Output[0]);
+        Assert.AreEqual($"1 [ ] {taskName}", fakeIO.Output[1]);
+        Assert.AreEqual($"2 [ ] {taskName2}", fakeIO.Output[2]);
+        Assert.AreEqual($"1 [ ] {taskName}", fakeIO.Output[3]);
+        Assert.AreEqual($"2 [ ] {taskName2}", fakeIO.Output[4]);
+        Assert.AreEqual($"3 [ ] {taskName3}", fakeIO.Output[5]);
+    }
 }
