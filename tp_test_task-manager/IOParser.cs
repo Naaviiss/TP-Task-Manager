@@ -25,6 +25,11 @@ public class IOParser
                     todoTaskService.AddTask(taskName);
                     DisplayTasks();
                     break;
+                case '-':
+                    var id = Int32.Parse(line.Substring(2));
+                    todoTaskService.RemoveTask(id);
+                    DisplayTasks();
+                    break;
                 case 'q':
                     await io.HandleExitAsync();
                     qBreak = true;

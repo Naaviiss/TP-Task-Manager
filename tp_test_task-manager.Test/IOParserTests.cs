@@ -83,4 +83,24 @@ public class IOParserTests
         Assert.AreEqual($"2 [ ] {taskName2}", fakeIO.Output[4]);
         Assert.AreEqual($"3 [ ] {taskName3}", fakeIO.Output[5]);
     }
+
+    [Test]
+    public async Task Run_HandleDeletion_DeleteTask()
+    {
+        //Given
+        var inputs = new Queue<string>();
+        var taskName = "Learn C#";
+        taskService.AddTask(taskName);
+        inputs.Enqueue($"- 1");
+        inputs.Enqueue($"q");
+        var fakeIO = new FakeIO(inputs);
+        ioParser = new IOParser(fakeIO, taskService);
+
+        //When
+        await ioParser.Run();
+
+        //Then
+        Assert.AreEqual(0, taskService.Tasks.Count);
+        Assert.AreEqual(0, fakeIO.Output.Count);
+    }
 }
