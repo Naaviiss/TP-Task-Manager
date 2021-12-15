@@ -113,4 +113,14 @@ public class Tests
         var task = taskService.Tasks.First(t => t.Id == id);
         Assert.AreEqual(false, task.IsDone);
     }
+
+    [Test]
+    public void SetTaskStatus_UndoWithUnExistingId_ThrowsException()
+    {
+        //Given
+        var id = 999;
+
+        //When & Then
+        Assert.Throws<ArgumentException>(() => taskService.SetTaskStatus(id, false));
+    }
 }

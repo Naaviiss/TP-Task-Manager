@@ -7,7 +7,6 @@ public class TodoTaskService : ITodoTaskService
     public IReadOnlyList<TodoTask> Tasks => tasks.AsReadOnly();
     private readonly List<TodoTask> tasks;
     private int nextTaskId = 0;
-    private ITodoTaskService _todoTaskServiceImplementation;
 
     public TodoTaskService()
     {
