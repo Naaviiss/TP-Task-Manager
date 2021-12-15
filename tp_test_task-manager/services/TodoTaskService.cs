@@ -13,11 +13,10 @@ public class TodoTaskService : ITodoTaskService
         tasks = new List<TodoTask>();
     }
 
-    public TodoTask AddTask(string taskName)
+    public void AddTask(string taskName)
     {
         var task = new TodoTask(++nextTaskId, taskName);
         tasks.Add(task);
-        return task;
     }
 
     public void RemoveTask(int id)

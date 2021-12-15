@@ -21,9 +21,10 @@ public class Tests
         string name = "Learn C#";
 
         //When
-        var task = taskService.AddTask(name);
+        taskService.AddTask(name);
 
         //Then
+        var task = taskService.Tasks.First(t => t.Id == 1);
         Assert.AreEqual(name, task.Name);
         Assert.AreEqual(false, task.IsDone);
         Assert.AreEqual(1, task.Id);
@@ -37,11 +38,13 @@ public class Tests
         string name2 = "Learn Java";
 
         //When
-        var task = taskService.AddTask(name);
-        var task2 = taskService.AddTask(name2);
+        taskService.AddTask(name);
+        taskService.AddTask(name2);
 
         //Then
+        var task = taskService.Tasks.First(t => t.Id == 1);
         Assert.AreEqual(1, task.Id);
+        var task2 = taskService.Tasks.First(t => t.Id == 2);
         Assert.AreEqual(2, task2.Id);
     }
 
@@ -53,8 +56,8 @@ public class Tests
         string name2 = "Learn Java";
 
         //When
-        _ = taskService.AddTask(name);
-        _ = taskService.AddTask(name2);
+        taskService.AddTask(name);
+        taskService.AddTask(name2);
 
         //Then
         Assert.AreEqual(2, taskService.Tasks.Count);
@@ -65,10 +68,10 @@ public class Tests
     {
         //Given
         string name = "Learn Java";
-        var id = taskService.AddTask(name).Id;
+        taskService.AddTask(name);
 
         //When
-        taskService.RemoveTask(id);
+        taskService.RemoveTask(1);
 
         //Then
         Assert.AreEqual(0, taskService.Tasks.Count);
@@ -79,13 +82,13 @@ public class Tests
     {
         //Given
         string name = "Learn Java";
-        var id = taskService.AddTask(name).Id;
+        taskService.AddTask(name);
 
         //When
-        taskService.SetTaskStatus(id, true);
+        taskService.SetTaskStatus(1, true);
 
         //Then
-        var task = taskService.Tasks.First(t => t.Id == id);
+        var task = taskService.Tasks.First(t => t.Id == 1);
         Assert.AreEqual(true, task.IsDone);
     }
 
@@ -104,13 +107,13 @@ public class Tests
     {
         //Given
         string name = "Learn Java";
-        var id = taskService.AddTask(name).Id;
+        taskService.AddTask(name);
 
         //When
-        taskService.SetTaskStatus(id, false);
+        taskService.SetTaskStatus(1, false);
 
         //Then
-        var task = taskService.Tasks.First(t => t.Id == id);
+        var task = taskService.Tasks.First(t => t.Id == 1);
         Assert.AreEqual(false, task.IsDone);
     }
 

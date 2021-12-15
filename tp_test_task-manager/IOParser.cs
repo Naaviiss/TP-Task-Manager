@@ -32,8 +32,9 @@ public class IOParser
                     DisplayTasks();
                     break;
                 case 'x':
+                case 'o':
                     id = Int32.Parse(line.Substring(2));
-                    todoTaskService.SetTaskStatus(id, true);
+                    todoTaskService.SetTaskStatus(id, operand == 'x');
                     DisplayTasks();
                     break;
                 case 'q':
