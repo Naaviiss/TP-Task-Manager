@@ -75,14 +75,14 @@ public class Tests
     }
 
     [Test]
-    public void DoTask_WithExistingId_TaskIsDone()
+    public void SetTaskStatus_DoWithExistingId_TaskIsDone()
     {
         //Given
         string name = "Learn Java";
         var id = taskService.AddTask(name).Id;
 
         //When
-        taskService.DoTask(id);
+        taskService.SetTaskStatus(id, true);
 
         //Then
         var task = taskService.Tasks.First(t => t.Id == id);
@@ -90,12 +90,27 @@ public class Tests
     }
 
     [Test]
-    public void DoTask_WithUnExistingId_ThrowsException()
+    public void SetTaskStatus_DoWithUnExistingId_ThrowsException()
     {
         //Given
         var id = 999;
 
         //When & Then
-        Assert.Throws<ArgumentException>(() => taskService.DoTask(id));
+        Assert.Throws<ArgumentException>(() => taskService.SetTaskStatus(id, true));
+    }
+
+    [Test]
+    public void SetTaskStatus_UndoWithExistingId_TaskIsNotDone()
+    {
+        //Given
+        string name = "Learn Java";
+        var id = taskService.AddTask(name).Id;
+
+        //When
+        taskService.SetTaskStatus(id, false);
+
+        //Then
+        var task = taskService.Tasks.First(t => t.Id == id);
+        Assert.AreEqual(false, task.IsDone);
     }
 }

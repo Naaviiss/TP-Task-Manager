@@ -26,11 +26,11 @@ public class TodoTaskService : ITodoTaskService
         tasks.RemoveAll(task => task.Id.Equals(id));
     }
 
-    public void DoTask(int id)
+    public void SetTaskStatus(int id, bool status)
     {
         try
         {
-            tasks.First(t => t.Id == id).IsDone = true;
+            tasks.First(t => t.Id == id).IsDone = status;
         }
         catch (Exception)
         {
