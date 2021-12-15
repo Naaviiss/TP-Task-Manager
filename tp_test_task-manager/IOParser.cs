@@ -17,10 +17,15 @@ public class IOParser
         while (!qBreak)
         {
             var line = await io.GetInputStringAsync();
-            var tokens = line.Split(" ");
-            switch (tokens[0])
+            var operand = line.ToCharArray()[0];
+            switch (operand)
             {
-                case "q":
+                case '+':
+                    var taskName = line.Substring(2);
+                    var task = todoTaskService.AddTask(taskName);
+                    io.OutPutStringAsync($"{task.Id} [ ] {task.Name}");
+                    break;
+                case 'q':
                     await io.HandleExitAsync();
                     qBreak = true;
                     break;
