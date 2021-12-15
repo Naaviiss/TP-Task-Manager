@@ -26,4 +26,20 @@ public class Tests
         Assert.AreEqual(false, task.IsDone);
         Assert.AreEqual(1, task.Number);
     }
+
+    [Test]
+    public void AddTask_WithSeveralTasks_IncreaseTaskNumber()
+    {
+        //Given
+        string name = "Learn C#";
+        string name2 = "Learn Java";
+
+        //When
+        var task = taskService.AddTask(name);
+        var task2 = taskService.AddTask(name2);
+
+        //Then
+        Assert.AreEqual(1, task.Number);
+        Assert.AreEqual(2, task2.Number);
+    }
 }
