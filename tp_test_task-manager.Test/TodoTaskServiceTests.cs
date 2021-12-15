@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework;
 
 namespace tp_test_task_manager.Test;
@@ -70,5 +71,20 @@ public class Tests
 
         //Then
         Assert.AreEqual(0, taskService.Tasks.Count);
+    }
+
+    [Test]
+    public void DoTask_WithExistingId_TaskIsDone()
+    {
+        //Given
+        string name = "Learn Java";
+        var id = taskService.AddTask(name).Id;
+
+        //When
+        taskService.DoTask(id);
+
+        //Then
+        var task = taskService.Tasks.First(t => t.Id == id);
+        Assert.AreEqual(true, task.IsDone);
     }
 }
