@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp_test_task-manager.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCli", "TaskCli\TaskCli.csproj", "{960E76AA-76D0-482A-8F6A-7AE1B22D0660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCli.Test", "TaskCli.Test\TaskCli.Test.csproj", "{0BFC65D8-4A46-4B1A-AFA6-AC824361DA5B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{960E76AA-76D0-482A-8F6A-7AE1B22D0660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{960E76AA-76D0-482A-8F6A-7AE1B22D0660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{960E76AA-76D0-482A-8F6A-7AE1B22D0660}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BFC65D8-4A46-4B1A-AFA6-AC824361DA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BFC65D8-4A46-4B1A-AFA6-AC824361DA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BFC65D8-4A46-4B1A-AFA6-AC824361DA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BFC65D8-4A46-4B1A-AFA6-AC824361DA5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
