@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using NUnit.Framework;
 
@@ -86,5 +87,15 @@ public class Tests
         //Then
         var task = taskService.Tasks.First(t => t.Id == id);
         Assert.AreEqual(true, task.IsDone);
+    }
+
+    [Test]
+    public void DoTask_WithUnExistingId_ThrowsException()
+    {
+        //Given
+        var id = 999;
+
+        //When & Then
+        Assert.Throws<ArgumentException>(() => taskService.DoTask(id));
     }
 }

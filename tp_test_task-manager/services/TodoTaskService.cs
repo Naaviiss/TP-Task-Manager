@@ -28,6 +28,13 @@ public class TodoTaskService : ITodoTaskService
 
     public void DoTask(int id)
     {
-        tasks.First(t => t.Id == id).IsDone = true;
+        try
+        {
+            tasks.First(t => t.Id == id).IsDone = true;
+        }
+        catch (Exception)
+        {
+            throw new ArgumentException($"No Task with id: {id}");
+        }
     }
 }
