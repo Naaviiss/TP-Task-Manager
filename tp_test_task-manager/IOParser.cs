@@ -42,7 +42,7 @@ public class IOParser
                     qBreak = true;
                     break;
                 default:
-                    break;
+                    throw new ArgumentException($"Operand {operand} is invalid");
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -143,5 +144,19 @@ public class IOParserTests
         //Then
         Assert.AreEqual(1, fakeIO.Output.Count);
         Assert.AreEqual($"1 [ ] {taskName}", fakeIO.Output[0]);
+    }
+
+    [Test]
+    public async Task Run_HandleBadOperand_ThrowsException()
+    {
+        //Given
+        var inputs = new Queue<string>();
+        inputs.Enqueue($"c 1");
+        inputs.Enqueue($"q");
+        var fakeIO = new FakeIO(inputs);
+        ioParser = new IOParser(fakeIO, taskService);
+
+        //When & Then
+        Assert.ThrowsAsync<ArgumentException>(async () => await ioParser.Run());
     }
 }
