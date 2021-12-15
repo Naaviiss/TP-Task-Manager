@@ -18,6 +18,7 @@ public class IOParser
         {
             var line = await io.GetInputStringAsync();
             var operand = line.ToCharArray()[0];
+            int id = 0;
             switch (operand)
             {
                 case '+':
@@ -26,8 +27,13 @@ public class IOParser
                     DisplayTasks();
                     break;
                 case '-':
-                    var id = Int32.Parse(line.Substring(2));
+                    id = Int32.Parse(line.Substring(2));
                     todoTaskService.RemoveTask(id);
+                    DisplayTasks();
+                    break;
+                case 'x':
+                    id = Int32.Parse(line.Substring(2));
+                    todoTaskService.SetTaskStatus(id, true);
                     DisplayTasks();
                     break;
                 case 'q':
@@ -42,6 +48,6 @@ public class IOParser
 
     private void DisplayTasks()
     {
-        todoTaskService.Tasks.ToList().ForEach(async task => await io.OutPutStringAsync($"{task.Id} [ ] {task.Name}"));
+        todoTaskService.Tasks.ToList().ForEach(async task => await io.OutPutStringAsync($"{task.Id} [{(task.IsDone ? 'x': ' ')}] {task.Name}"));
     }
 }

@@ -103,4 +103,24 @@ public class IOParserTests
         Assert.AreEqual(0, taskService.Tasks.Count);
         Assert.AreEqual(0, fakeIO.Output.Count);
     }
+
+    [Test]
+    public async Task Run_HandleDoTask_DoTask()
+    {
+        //Given
+        var inputs = new Queue<string>();
+        var taskName = "Learn C#";
+        taskService.AddTask(taskName);
+        inputs.Enqueue($"x 1");
+        inputs.Enqueue($"q");
+        var fakeIO = new FakeIO(inputs);
+        ioParser = new IOParser(fakeIO, taskService);
+
+        //When
+        await ioParser.Run();
+
+        //Then
+        Assert.AreEqual(1, fakeIO.Output.Count);
+        Assert.AreEqual($"1 [x] {taskName}", fakeIO.Output[0]);
+    }
 }
