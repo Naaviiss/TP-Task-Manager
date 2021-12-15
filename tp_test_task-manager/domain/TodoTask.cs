@@ -2,13 +2,13 @@ namespace tp_test_task_manager.domain;
 
 public class TodoTask
 {
-    public int Number { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public bool IsDone { get; set; }
 
-    public TodoTask(int number, string name)
+    public TodoTask(int id, string name)
     {
-        Number = number;
+        Id = id;
         Name = name;
         IsDone = false;
     }

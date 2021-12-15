@@ -6,4 +6,5 @@ public interface ITodoTaskService
 {
     IReadOnlyList<TodoTask> Tasks { get; }
     TodoTask AddTask(string taskName);
+    void RemoveTask(int id);
 }

@@ -24,7 +24,7 @@ public class Tests
         //Then
         Assert.AreEqual(name, task.Name);
         Assert.AreEqual(false, task.IsDone);
-        Assert.AreEqual(1, task.Number);
+        Assert.AreEqual(1, task.Id);
     }
 
     [Test]
@@ -39,8 +39,8 @@ public class Tests
         var task2 = taskService.AddTask(name2);
 
         //Then
-        Assert.AreEqual(1, task.Number);
-        Assert.AreEqual(2, task2.Number);
+        Assert.AreEqual(1, task.Id);
+        Assert.AreEqual(2, task2.Id);
     }
 
     [Test]
@@ -56,5 +56,19 @@ public class Tests
 
         //Then
         Assert.AreEqual(2, taskService.Tasks.Count);
+    }
+
+    [Test]
+    public void RemoveTask_WithExistingId_RemoveTask()
+    {
+        //Given
+        string name = "Learn Java";
+        var id = taskService.AddTask(name).Id;
+
+        //When
+        taskService.RemoveTask(id);
+
+        //Then
+        Assert.AreEqual(0, taskService.Tasks.Count);
     }
 }
