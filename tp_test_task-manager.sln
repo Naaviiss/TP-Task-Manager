@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp_test_task-manager", "tp_test_task-manager\tp_test_task-manager.csproj", "{667984C3-6CAA-43B2-80BB-739C68CB6EDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp_test_task-manager.Test", "tp_test_task-manager.Test\tp_test_task-manager.Test.csproj", "{0E09B531-C2BB-4FE8-8276-E56DAE58834C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{667984C3-6CAA-43B2-80BB-739C68CB6EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667984C3-6CAA-43B2-80BB-739C68CB6EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667984C3-6CAA-43B2-80BB-739C68CB6EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667984C3-6CAA-43B2-80BB-739C68CB6EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E09B531-C2BB-4FE8-8276-E56DAE58834C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E09B531-C2BB-4FE8-8276-E56DAE58834C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E09B531-C2BB-4FE8-8276-E56DAE58834C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E09B531-C2BB-4FE8-8276-E56DAE58834C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
