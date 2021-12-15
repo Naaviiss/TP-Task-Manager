@@ -4,11 +4,19 @@ namespace tp_test_task_manager;
 
 public class TodoTaskService : ITodoTaskService
 {
-    private int count = 0;
+    public IReadOnlyList<TodoTask> Tasks => tasks.AsReadOnly();
+    private readonly List<TodoTask> tasks;
+    private int nextTaskNumber = 0;
+
+    public TodoTaskService()
+    {
+        tasks = new List<TodoTask>();
+    }
 
     public TodoTask AddTask(string taskName)
     {
-        var task = new TodoTask(++count, taskName);
+        var task = new TodoTask(++nextTaskNumber, taskName);
+        tasks.Add(task);
         return task;
     }
 }

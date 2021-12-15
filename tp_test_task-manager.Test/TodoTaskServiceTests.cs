@@ -42,4 +42,19 @@ public class Tests
         Assert.AreEqual(1, task.Number);
         Assert.AreEqual(2, task2.Number);
     }
+
+    [Test]
+    public void AddTask_WithSeveralTasks_InsertMultipleTasks()
+    {
+        //Given
+        string name = "Learn C#";
+        string name2 = "Learn Java";
+
+        //When
+        _ = taskService.AddTask(name);
+        _ = taskService.AddTask(name2);
+
+        //Then
+        Assert.AreEqual(2, taskService.Tasks.Count);
+    }
 }
